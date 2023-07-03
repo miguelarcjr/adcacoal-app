@@ -11,13 +11,9 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
-    "axios": "^0.21.1",
-    "pinia": "^2.0.11",
-    "qiankun": "^2.9.2",
-    "quasar": "^2.6.0",
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0",
+    "@capacitor-community/fcm": "^3.0.2",
+    "@capacitor/core": "^4.6.3",
+    "@capacitor/push-notifications": "^4.1.2",
     "@fullcalendar/core": "^6.1.4",
     "@fullcalendar/daygrid": "^6.1.4",
     "@fullcalendar/google-calendar": "^6.1.4",
@@ -25,7 +21,14 @@
     "@fullcalendar/interaction": "^6.1.4",
     "@fullcalendar/list": "^6.1.4",
     "@fullcalendar/timegrid": "^6.1.4",
-    "@fullcalendar/vue3": "^6.1.4"
+    "@fullcalendar/vue3": "^6.1.4",
+    "@quasar/extras": "^1.0.0",
+    "axios": "^0.21.1",
+    "pinia": "^2.0.11",
+    "qiankun": "^2.9.2",
+    "quasar": "^2.6.0",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0"
   },
   "devDependencies": {
     "@quasar/app-vite": "^1.0.0",

@@ -37,6 +37,14 @@ const routes: RouteRecordRaw[] = [
         path: '/agenda',
         component: () => import('../modules/agenda/pages/AgendaView.vue'),
       },
+      {
+        path: '/insta',
+        component: () => import('../shared/components/InstaFeed.vue'),
+      },
+      {
+        path: '/notificacao',
+        component: () => import('../shared/components/InstaFeed.vue'),
+      },
     ],
   },
 ];

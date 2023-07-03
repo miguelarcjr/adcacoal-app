@@ -1,0 +1,7 @@
+{
+  "appId": "qahal.adcacoal.app",
+  "appName": "AD Cacoal",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "www"
+}

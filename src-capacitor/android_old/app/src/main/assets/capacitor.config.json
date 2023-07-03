@@ -1,0 +1,10 @@
+{
+  "appId": "com.adcacoal.app",
+  "appName": "AD Cacoal",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "www",
+  "server": {
+    "url": "http://192.168.0.114:9500"
+  }
+}

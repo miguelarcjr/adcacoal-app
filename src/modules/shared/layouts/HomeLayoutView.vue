@@ -1,59 +1,83 @@
+<!-- eslint-disable @typescript-eslint/no-unused-vars -->
+<!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <template>
   <div class="home_container">
     <nav>
-      <q-toolbar class="bg-primary text-white">
-        <q-btn flat round dense icon="local_fire_department" />
-        <q-toolbar-title> AD Cacoal </q-toolbar-title>
-        <!--         <q-btn flat round dense icon="more_vert" />
- -->
-      </q-toolbar>
+      <qa-toolbar />
     </nav>
     <div class="content_container">
-      <router-view />
+      <keep-alive>
+        <router-view />
+      </keep-alive>
     </div>
     <footer class="navbar">
-      <q-tabs v-model="tab" class="bg-primary text-white shadow-2">
-        <q-tab
-          name="/live"
-          icon="live_tv"
-          label="Ao vivo"
-          @click="go('/live')"
-        />
-        <q-tab
-          name="/biblia"
-          icon="fa fa-book-bible"
-          label="Bíblia"
-          @click="go('/biblia')"
-        />
-        <q-tab
-          name="/hino"
-          icon="music_note"
-          label="Harpa"
-          @click="go('/hino')"
-        />
-        <q-tab
-          name="/agenda"
-          icon="event"
-          label="Agenda"
-          @click="go('/agenda')"
-        />
-      </q-tabs>
+      <qa-menu />
     </footer>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
+import { FCM } from '@capacitor-community/fcm';
 
-import { ref } from 'vue';
+import {
+  ActionPerformed,
+  PushNotificationSchema,
+  PushNotifications,
+  Token,
+} from '@capacitor/push-notifications';
 
-const tab = ref('/live');
-const router = useRouter();
+import { onMounted } from 'vue';
+import QaMenu from '../components/QaMenu.vue';
+import QaToolbar from '../components/QaToolbar.vue';
 
-function go(path: string) {
-  tab.value = path;
-  router.push(path);
-}
+onMounted(() => {
+  console.log('Initializing HomePage');
+
+  // Request permission to use push notifications
+  // iOS will prompt user and return if they granted permission or not
+  // Android will just grant without prompting
+  PushNotifications.requestPermissions().then(async (result) => {
+    if (result.receive === 'granted') {
+      // Register with Apple / Google to receive push via APNS/FCM
+      await PushNotifications.register();
+      FCM.subscribeTo({ topic: 'igreja' })
+        .then((r) => console.log('subscribed to topic'))
+        .catch((err) => console.log(err));
+
+      FCM.setAutoInit({ enabled: true }).then(() =>
+        console.log('Auto init enabled')
+      );
+
+      FCM.isAutoInitEnabled().then((r) => {
+        console.log('Auto init is ' + (r.enabled ? 'enabled' : 'disabled'));
+      });
+    } else {
+      // Show some error
+    }
+  });
+
+  PushNotifications.addListener('registration', (token: Token) => {
+    console.log('Push registration success, token: ' + token.value);
+  });
+
+  PushNotifications.addListener('registrationError', (error: any) => {
+    console.log('Error on registration: ' + JSON.stringify(error));
+  });
+
+  PushNotifications.addListener(
+    'pushNotificationReceived',
+    (notification: PushNotificationSchema) => {
+      console.log('Push received: ' + JSON.stringify(notification));
+    }
+  );
+
+  PushNotifications.addListener(
+    'pushNotificationActionPerformed',
+    (notification: ActionPerformed) => {
+      console.log('Push action performed: ' + JSON.stringify(notification));
+    }
+  );
+});
 </script>
 
 <style scoped>
@@ -61,7 +85,7 @@ function go(path: string) {
   display: grid;
   flex-flow: column wrap;
   height: 100vh;
-  grid-template-rows: 50px 1fr 72px;
+  grid-template-rows: 50px 1fr;
 }
 
 .content_container {

@@ -137,6 +137,11 @@ b {
   flex-grow: 1;
   padding: 1em;
 }
+.demo-app-main tr * {
+  font-family: 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+    sans-serif !important;
+  font-style: normal !important;
+}
 .fc {
   /* the calendar root */
   max-width: 1100px;
@@ -144,8 +149,18 @@ b {
 }
 .fc .fc-toolbar-title {
   font-size: 1em !important;
+  font-family: 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial,
+    sans-serif !important;
+  font-weight: bold;
 }
 .fc-view-harness-active {
   height: 600px !important;
+}
+.fc-theme-standard .fc-list {
+  border-radius: 3.5px !important;
+}
+.fc-list-day-text,
+.fc-list-day-side-text {
+  color: var(--q-accent) !important;
 }
 </style>

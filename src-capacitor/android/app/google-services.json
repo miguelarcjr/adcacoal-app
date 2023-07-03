@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "152141862316",
+    "project_id": "adcacoalapp",
+    "storage_bucket": "adcacoalapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152141862316:android:4679e6a31eb2e89dda5609",
+        "android_client_info": {
+          "package_name": "com.adcacoal.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "152141862316-4ebqstlqk5475srkg170kveo1e3hgp3h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM8U90fVTNSqwkKf997wa9mYDfWY-4Uik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "152141862316-4ebqstlqk5475srkg170kveo1e3hgp3h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152141862316:android:1dad6b212cd5e37bda5609",
+        "android_client_info": {
+          "package_name": "qahal.adcacoal.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "152141862316-4ebqstlqk5475srkg170kveo1e3hgp3h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM8U90fVTNSqwkKf997wa9mYDfWY-4Uik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "152141862316-4ebqstlqk5475srkg170kveo1e3hgp3h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
